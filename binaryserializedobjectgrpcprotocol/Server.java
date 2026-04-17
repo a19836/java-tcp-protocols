@@ -49,7 +49,6 @@ public class Server {
 
 		@Override
 		public void run() {
-            Server server = new Server();
             try {
 				System.out.println("--------------------------------");
 				System.out.println("# Client connected");

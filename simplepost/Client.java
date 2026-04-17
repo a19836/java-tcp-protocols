@@ -20,7 +20,7 @@ import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 
 public class Client {
-	public static final int TIMEOUT_MS = 60_000; //timeout of 120 secs
+	public static final int TIMEOUT_MS = 60_000; //timeout of 60 secs
 	private static final String HOST = "localhost";
 	private static final int PORT = 8080;
 

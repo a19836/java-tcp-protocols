@@ -114,7 +114,7 @@ public class Client {
 
 	//ask server to close connection
 	private static void requestClosingConnection(BufferedWriter writer) throws IOException {
-		writer.write("POST / HTTP/1.1\r\n");
+		writer.write("POST / HTTP/2.0\r\n");
 		writer.write("Host: localhost:8080\r\n");
 		writer.write("Connection: close\r\n");
 		writer.write("Content-Length: 0\r\n");
@@ -124,7 +124,7 @@ public class Client {
 
 	//send request to server with sentence as body
 	private static void sendHttpRequest(BufferedWriter writer, String sentence) throws IOException {
-		writer.write("POST / HTTP/1.1\r\n");
+		writer.write("POST / HTTP/2.0\r\n");
 		writer.write("Host: " + HOST + ":" + PORT + "\r\n");
 		writer.write("Content-Length: " + sentence.length() + "\r\n");
 		writer.write("Connection: keep-alive\r\n");

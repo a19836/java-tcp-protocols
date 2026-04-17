@@ -58,6 +58,9 @@ public class Client {
 						BinaryTaskWire.writeEchoRequest(dataOut, et.getMessage());
 						System.out.println("Binary request sent without headers");
 
+						String response = BinaryTaskWire.readResponse(dataIn);
+						System.out.println("Server result: " + response);
+
 						//Method 2: execute request with headers (more complex, but more flexible)
 						Map<String, String> headers = new HashMap<>();
 						headers.put("Content-Type", "application/echo");
@@ -66,7 +69,7 @@ public class Client {
 						BinaryTaskWire.writeExecuteRequestWithHeaders(dataOut, headers, et.getMessage());
 						System.out.println("Binary request sent with headers");
 
-						String response = BinaryTaskWire.readResponse(dataIn);
+						response = BinaryTaskWire.readResponse(dataIn);
 						System.out.println("Server result: " + response);
 						System.out.println();
 					}

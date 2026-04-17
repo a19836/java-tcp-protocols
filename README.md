@@ -7,7 +7,9 @@
 **Java TCP Protocols** is a Java library that simulates some behaviors of different TCP communication patterns between client and server.
 This library contains some examples and code basis, so developers can understand how protocols work and start creating their own protocols.
 
-Main Idea: 
+The idea is to explain how to connect 2 end-points with TCP sockets - through the ServerSocket and Socket (Client) classes - and then transfer data between these points - through the BufferedReader, OutputWriter, InputStream, OutputStream, DataInputStream, DataOutputStream, ObjectInputStream, ObjectOutputStream...
+
+To do this, we will create a client and server class to connect to each other, this is: 
 - Client that reads user input and sends message to server. Then reads and prints html from server.
 - Server that reads client messages and sends them back in a HTML format.
 
@@ -26,7 +28,7 @@ This is a very simple simulation of the HTTP 2.0 protocol in the browsers.
 
 ### String Protocol
 Client sends an ACTION and a MESSAGE to be executed from the server side. The ACTION must be pre-defined in the server side and the client simple asks server to execute them with different payloads.
-Basically some logic than gRPC but instead of using binary transfer, it uses simple string transfers with ACTION and MESSAGE strings.
+Basically some logic than gRPC and REST but instead of using binary transfer, it uses simple string transfers with ACTION and MESSAGE strings.
 
 ### Binary Serialized Object gRPC Protocol
 Simulate the gRPC protocol in a very simple way. Only the basics of the gRPC protocol, where client transfers an object containing a method with params to be called in the server side.
