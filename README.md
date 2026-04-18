@@ -16,33 +16,33 @@ To do this, we will create a client and server class to connect to each other, t
 ## Created Scenarios:
 
 ### Simple Get Server/Client: 
-Same idea described above, but client creates a server socket for each message sent.
-This is similar with the HTTP protocol, but without using the HTTP protocol - only using TCP protocol.
+The idea is the same as described above, but the client creates a server socket for each message sent.
+This is similar to the HTTP protocol, but without using the real HTTP 1.1 protocol - using only the TCP protocol.
 
 ### Simple Post Server/Client: 
-Same idea described above, but client creates a server socket for each message sent and sends also some content in the body, just like a HTTP POST request, but without using the HTTP protocol.
+The idea is the same as described above, but the client creates a server socket for each message sent and also sends some content in the message body, just like in an HTTP 1.1 POST request, but without using the real HTTP protocol.
 
 ### HTTP 2.0 Server/Client: 
-Same idea described above, but clients reuses the previous server reconnection, if possible. Also it reconnects automatically when connections reaches to timeout and is killed automatically. 
-This is a very simple simulation of the HTTP 2.0 protocol in the browsers.
+The idea is the same as described above, but the client reuses the server's previous reconnection, if possible. In addition, it automatically reconnects when the connection times out and is automatically terminated.
+This is a very simple simulation of the HTTP 2.0 protocol in browsers.
 
 ### String Protocol
-Client sends an ACTION and a MESSAGE to be executed from the server side. The ACTION must be pre-defined in the server side and the client simple asks server to execute them with different payloads.
-Basically some logic than gRPC and REST but instead of using binary transfer, it uses simple string transfers with ACTION and MESSAGE strings.
+The client sends an ACTION and a MESSAGE to be executed on the server. The ACTION must be predefined on the server, and the client simply requests that the server executes it with different payloads.
+Basically, it uses logic similar to gRPC and REST, but instead of using binary transfer and URL, it uses simple string transfers with ACTION and MESSAGE headers.
 
 ### Binary Serialized Object gRPC Protocol
-Simulate the gRPC protocol in a very simple way. Only the basics of the gRPC protocol, where client transfers an object containing a method with params to be called in the server side.
+Simulate the gRPC protocol in a very simple way. Just the basic concepts of the gRPC protocol, where the client sends an object containing a method with parameters to be called on the server.
 
 ### Binary Serialized Object Protocol
-Client serializes the EchoTask object in binary and sends it over the network. Server deserializes the binary payload, converts it to a RemoteExecutable object, and calls the execute method. This uses Java object serialization for the full object transfer.
-This has some similarities with the gRPC protocol without using HTTP protocol and without using the ProtoBuf library and the correspondent .proto files. Here we transfer the objects by serializing them.
-Client and Server share the RemoteExecutable and EchoTask classes.
+The client serializes the EchoTask object into binary and sends it over the network. The server deserializes the binary payload, converts it into a RemoteExecutable object, and calls the execute method. This uses Java object serialization for the complete object transfer.
+This has some similarities to the gRPC protocol, without using the HTTP protocol and without using the ProtoBuf library and the corresponding .proto files. Here, we transfer objects by serializing them.
+The client and server share the RemoteExecutable and EchoTask classes.
 
 ### Binary Manual Properties Object Protocol
-Because is not possible passing objects throught the network without being serialized, we only transfer the object properties and then create a new object in the server side, this is, client creates a object but only sends its properties to server, in binary form. This is faster than sending the entire object serialized.
-Then server, receives these properties and creates a new object from the server side, executing it. 
-This has some similarities with the gRPC protocol without using HTTP protocol and without using the ProtoBuf library and the correspondent .proto files. Here we transfer only the objects properties manually that matter - via binary form through the network.
-Client and Server share the BinaryTaskWire and EchoTask classes.
+Since it's not possible to pass objects over the network without serializing them, we only transfer the object's properties and then create a new object on the server. That is, the client creates an object but sends only its properties to the server in binary format. This is faster than sending the entire serialized object.
+Then, the server receives these properties and creates a new object on the server, executing it.
+This has some similarities to the gRPC protocol, without using the HTTP protocol and without using the ProtoBuf library and the corresponding .proto files. Here, we manually transfer only the relevant properties of the object, in binary format, over the network.
+The client and server share the BinaryTaskWire and EchoTask classes.
 
 ## Run:
 From the `java` folder (so `protocol/` is on the classpath for object protocol):
