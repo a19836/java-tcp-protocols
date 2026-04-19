@@ -44,6 +44,9 @@ Then, the server receives these properties and creates a new object on the serve
 This has some similarities to the gRPC protocol, without using the HTTP protocol and without using the ProtoBuf library and the corresponding .proto files. Here, we manually transfer only the relevant properties of the object, in binary format, over the network.
 The client and server share the BinaryTaskWire and EchoTask classes.
 
+### AMQP Protocol
+Simulates the AMQP protocol, similar to RabbitMQ, by implementing a client that sends events and a server that receives client events, enqueues them, processes them, and dispatches notifications to the relevant clients..
+
 ## Run:
 From the `java` folder (so `protocol/` is on the classpath for object protocol):
 ```java
@@ -60,6 +63,7 @@ java httpprotocol.Server
 # or: java binaryserializedobjectgrpcprotocol.Server
 # or: java binaryserializedobjectprotocol.Server
 # or: java binarymanualpropertiesobjectprotocol.Server
+# or: java amqpprotocol.Server
 ```
 
 Client, from `java` folder:
@@ -72,6 +76,7 @@ java httpprotocol.Client
 # or: java binaryserializedobjectgrpcprotocol.Client
 # or: java binaryserializedobjectprotocol.Client
 # or: java binarymanualpropertiesobjectprotocol.Client
+# or: java amqpprotocol.Client
 ```
 
 Note that the `binaryserializedobjectprotocol.Client`, `binaryserializedobjectprotocol.Server`, `binarymanualpropertiesobjectprotocol.Client` and `binarymanualpropertiesobjectprotocol.Server` classes need the parent directory on the classpath so `protocol.*` loads. If you prefer `cd binaryserializedobjectprotocol` or `cd binarymanualpropertiesobjectprotocol`, use:
